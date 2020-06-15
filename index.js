@@ -119,6 +119,8 @@ async function main() {
   });
 }
 
+main();
+
 // tfjsWasm.setWasmPath(
 //     `https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-backend-wasm@2.0.0/dist/tfjs-backend-wasm.wasm`);
 // tf.setBackend('wasm').then(() => main());
