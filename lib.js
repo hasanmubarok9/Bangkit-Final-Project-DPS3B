@@ -1,5 +1,6 @@
 import * as tf from '@tensorflow/tfjs';
 // import * as tfjsWasm from '@tensorflow/tfjs-backend-wasm';
+import {LABELS} from './dict';
 // import * as cam from './cam';
 // import jimp from 'jimp';
 
@@ -47,10 +48,7 @@ export async function predict(imgElement) {
     // const normalized = img.toFloat().mul(normalizationConstant);
 
     let img = tf.browser.fromPixels(imgElement, 3)
-      .resizeBilinear([IMAGE_SIZE, IMAGE_SIZE], false)
       .expandDims(0)
-      .pad([[1, 1]])
-      .toFloat()
       .mul(normalizationConstant);
 
     // const image = tf.image.resizeBilinear(normalized, [IMAGE_SIZE, IMAGE_SIZE], false);
@@ -67,9 +65,9 @@ export async function predict(imgElement) {
   // Convert logits to probabilities and class names.
   const classes = await logits.data();
 
-  console.log('Predictions: ', classes);
-  const labelName = classes[0] < 0.5? 'NORMAL' : 'PNEUMONIA';
-  const probability = classes[0];
+  const indexMax = classes.indexOf(Math.max(...classes));
+  const labelName = LABELS[indexMax];
+  const probability = classes[indexMax];
 
   const totalTime1 = performance.now() - startTime1;
   const totalTime2 = performance.now() - startTime2;
