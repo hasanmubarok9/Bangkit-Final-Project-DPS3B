@@ -15,8 +15,8 @@
  * =============================================================================
  */
 
-import * as tf from '@tensorflow/tfjs';
-import * as tfjsWasm from '@tensorflow/tfjs-backend-wasm';
+// import * as tf from '@tensorflow/tfjs';
+// import * as tfjsWasm from '@tensorflow/tfjs-backend-wasm';
 // import {version} from '@tensorflow/tfjs-backend-wasm/dist/version';
 import {IMAGE_SIZE, loadModel, predict} from './lib';
 
@@ -119,6 +119,6 @@ async function main() {
   });
 }
 
-tfjsWasm.setWasmPath(
-    `https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-backend-wasm@2.0.0/dist/tfjs-backend-wasm.wasm`);
-tf.setBackend('wasm').then(() => main());
+// tfjsWasm.setWasmPath(
+//     `https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-backend-wasm@2.0.0/dist/tfjs-backend-wasm.wasm`);
+// tf.setBackend('wasm').then(() => main());
